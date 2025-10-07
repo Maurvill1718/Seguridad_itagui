@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ Análisis de Seguridad - Itagüí</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ Análisis de Seguridad en Itagüí</h1>
+            <p class="subtitle">Comparte tu testimonio y obtén un análisis automático con inteligencia artificial</p>
+        </header>
+
+        <main>
+            <div class="form-section">
+                <h2>📝 Comparte tu testimonio</h2>
+                <form id="testimonioForm">
+                    <div class="input-group">
+                        <label for="testimonio">Describe lo que ocurrió en tu zona:</label>
+                        <textarea 
+                            id="testimonio" 
+                            name="testimonio" 
+                            placeholder="Describe lo que ocurrió en tu zona... Ejemplo: Anoche intentaron robar en el parque principal. Vi a dos personas sospechosas cerca de las 8 PM. Estaban vestidos de negro y parecían estar observando las casas..."
+                            rows="6"
+                            required
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn-analyze">
+                        🔍 Analizar Testimonio
+                    </button>
+                </form>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Analizando tu testimonio...</p>
+            </div>
+
+            <div id="results" class="results hidden">
+                <h2>📊 Resultados del Análisis</h2>
+                
+                <div class="result-card emotion-card">
+                    <h3><span id="emotionIcon">😊</span> Análisis Emocional</h3>
+                    <div class="result-content">
+                        <span class="emotion-label" id="emotionType">-</span>
+                        <span class="confidence" id="emotionConfidence">-</span>
+                        <p class="explanation" id="emotionExplanation">-</p>
+                    </div>
+                </div>
+
+                <div class="result-card veracity-card">
+                    <h3><span id="veracityIcon">✅</span> Análisis de Veracidad</h3>
+                    <div class="result-content">
+                        <span class="veracity-label" id="veracityType">-</span>
+                        <span class="confidence" id="veracityConfidence">-</span>
+                        <p class="explanation" id="veracityExplanation">-</p>
+                    </div>
+                </div>
+
+                <div class="result-card summary-card">
+                    <h3>📋 Explicación de la Situación</h3>
+                    <div class="result-content">
+                        <p id="summaryText">-</p>
+                    </div>
+                </div>
+
+                <div class="result-card original-card">
+                    <h3>📝 Testimonio Original</h3>
+                    <div class="result-content">
+                        <p id="originalText">-</p>
+                    </div>
+                </div>
+
+                <button id="newAnalysis" class="btn-new">
+                    🔄 Nuevo Análisis
+                </button>
+            </div>
+
+            <div id="error" class="error hidden">
+                <h3>❌ Error</h3>
+                <p id="errorMessage">Ocurrió un error inesperado</p>
+                <button id="retryBtn" class="btn-retry">🔄 Intentar de Nuevo</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>🔬 Sistema de Análisis NLP para Seguridad Ciudadana</p>
+            <p>Desarrollado con ❤️ para la comunidad de Itagüí, Antioquia</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('testimonioForm');
+            const loading = document.getElementById('loading');
+            const results = document.getElementById('results');
+            const error = document.getElementById('error');
+            const newAnalysisBtn = document.getElementById('newAnalysis');
+            const retryBtn = document.getElementById('retryBtn');
+
+            // Función para mostrar/ocultar elementos
+            function showElement(element) {
+                element.classList.remove('hidden');
+            }
+
+            function hideElement(element) {
+                element.classList.add('hidden');
+            }
+
+            // Función para obtener emoji según emoción
+            function getEmotionIcon(emotion) {
+                const icons = {
+                    'Miedo': '😨',
+                    'Enojo': '😡', 
+                    'Tristeza': '😢',
+                    'Esperanza': '😊',
+                    'Neutral': '😐',
+                    'Preocupación': '😟',
+                    'Alegría': '😄',
+                    'Sorpresa': '😲',
+                    'Disgusto': '🤢'
+                };
+                return icons[emotion] || '😊';
+            }
+
+            // Función para obtener emoji según veracidad
+            function getVeracityIcon(veracity) {
+                console.log('Veracidad recibida:', veracity);
+                if (veracity.toLowerCase().includes('verdadero')) return '✅';
+                if (veracity.toLowerCase().includes('falso')) return '❌';
+                if (veracity.toLowerCase().includes('incierto')) return '❓';
+                if (veracity.toLowerCase().includes('rumor')) return '⚠️';
+                return '❓';
+            }
+
+            // Función para obtener color según emoción
+            function getEmotionColor(emotion) {
+                const colors = {
+                    'Miedo': '#ff4757',
+                    'Enojo': '#ff6b6b', 
+                    'Tristeza': '#5f27cd',
+                    'Esperanza': '#2ed573',
+                    'Neutral': '#747d8c',
+                    'Preocupación': '#ffa502',
+                    'Alegría': '#2ed573',
+                    'Sorpresa': '#ff9ff3',
+                    'Disgusto': '#ff6348'
+                };
+                return colors[emotion] || '#747d8c';
+            }
+
+            // Función para obtener color según veracidad
+            function getVeracityColor(veracity) {
+                console.log('Color para veracidad:', veracity);
+                if (veracity.toLowerCase().includes('verdadero')) return '#2ed573'; // Verde
+                if (veracity.toLowerCase().includes('falso')) return '#ff4757'; // Rojo
+                if (veracity.toLowerCase().includes('incierto')) return '#ffa502'; // Naranja
+                if (veracity.toLowerCase().includes('rumor')) return '#ff6b6b'; // Rojo claro
+                return '#747d8c'; // Gris por defecto
+            }
+
+            // Función para analizar testimonio
+            async function analyzeTestimony(testimonio) {
+                try {
+                    showElement(loading);
+                    hideElement(results);
+                    hideElement(error);
+
+                    console.log('Enviando testimonio:', testimonio);
+
+                    const response = await fetch('/analizar', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ testimonio: testimonio })
+                    });
+
+                    console.log('Respuesta recibida:', response.status);
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Error del servidor:', errorText);
+                        
+                        // Manejar errores específicos de límite
+                        if (response.status === 429 || errorText.includes('quota') || errorText.includes('limit')) {
+                            throw new Error('🚫 Has excedido el límite de análisis de Gemini. Por favor, intenta más tarde o contacta al administrador.');
+                        }
+                        
+                        throw new Error(`Error del servidor: ${response.status}`);
+                    }
+
+                    const responseText = await response.text();
+                    console.log('Texto de respuesta:', responseText);
+
+                    let data;
+                    try {
+                        data = JSON.parse(responseText);
+                    } catch (parseError) {
+                        console.error('Error parseando JSON:', parseError);
+                        throw new Error('Error en la respuesta del servidor');
+                    }
+
+                    if (data.error) {
+                        // Manejar errores específicos de límite de API
+                        if (data.error.includes('quota') || data.error.includes('limit') || data.error.includes('exceeded')) {
+                            throw new Error('🚫 Has excedido el límite de análisis de Gemini. Por favor, intenta más tarde o contacta al administrador.');
+                        }
+                        throw new Error(data.error);
+                    }
+
+                    // Mostrar resultados
+                    displayResults(data);
+                    hideElement(loading);
+                    showElement(results);
+
+                } catch (err) {
+                    console.error('Error completo:', err);
+                    hideElement(loading);
+                    showElement(error);
+                    document.getElementById('errorMessage').textContent = err.message;
+                }
+            }
+
+            // Función para mostrar resultados
+            function displayResults(data) {
+                // Emoción
+                const emotionType = document.getElementById('emotionType');
+                const emotionConfidence = document.getElementById('emotionConfidence');
+                const emotionExplanation = document.getElementById('emotionExplanation');
+                const emotionIcon = document.getElementById('emotionIcon');
+                
+                emotionType.textContent = data.emocion.tipo;
+                const emotionColor = getEmotionColor(data.emocion.tipo);
+                emotionType.style.setProperty('background-color', emotionColor, 'important');
+                emotionType.style.setProperty('background', emotionColor, 'important');
+                emotionType.style.color = '#ffffff'; // Texto blanco para mejor contraste
+                emotionType.style.border = `2px solid ${emotionColor}`;
+                emotionConfidence.textContent = `${data.emocion.confianza}% de confianza`;
+                emotionExplanation.textContent = `(${data.emocion.explicacion})`;
+                emotionIcon.textContent = getEmotionIcon(data.emocion.tipo);
+
+                // Veracidad
+                const veracityType = document.getElementById('veracityType');
+                const veracityConfidence = document.getElementById('veracityConfidence');
+                const veracityExplanation = document.getElementById('veracityExplanation');
+                const veracityIcon = document.getElementById('veracityIcon');
+                
+                console.log('Datos de veracidad:', data.veracidad);
+                console.log('Tipo de veracidad:', data.veracidad.tipo);
+                
+                veracityType.textContent = data.veracidad.tipo;
+                const veracityColor = getVeracityColor(data.veracidad.tipo);
+                veracityType.style.setProperty('background-color', veracityColor, 'important');
+                veracityType.style.setProperty('background', veracityColor, 'important');
+                veracityType.style.color = '#ffffff'; // Texto blanco para mejor contraste
+                veracityType.style.border = `2px solid ${veracityColor}`;
+                veracityConfidence.textContent = `${data.veracidad.confianza}% de confianza`;
+                veracityExplanation.textContent = `(${data.veracidad.explicacion})`;
+                veracityIcon.textContent = getVeracityIcon(data.veracidad.tipo);
+
+                // Resumen
+                document.getElementById('summaryText').textContent = data.resumen;
+
+                // Testimonio original
+                document.getElementById('originalText').textContent = data.testimonio_original;
+            }
+
+            // Event listeners
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const testimonio = document.getElementById('testimonio').value.trim();
+                if (testimonio) {
+                    analyzeTestimony(testimonio);
+                } else {
+                    alert('Por favor, escribe un testimonio antes de analizar.');
+                }
+            });
+
+            newAnalysisBtn.addEventListener('click', function() {
+                hideElement(results);
+                hideElement(error);
+                document.getElementById('testimonio').value = '';
+                document.getElementById('testimonio').focus();
+            });
+
+            retryBtn.addEventListener('click', function() {
+                hideElement(error);
+                const testimonio = document.getElementById('testimonio').value.trim();
+                if (testimonio) {
+                    analyzeTestimony(testimonio);
+                } else {
+                    alert('Por favor, escribe un testimonio antes de analizar.');
+                }
+            });
+
+            // Asegurar que los elementos estén ocultos al inicio
+            hideElement(loading);
+            hideElement(results);
+            hideElement(error);
+        });
+    </script>
+</body>
+</html>
