@@ -58,9 +58,8 @@ Es como una "llave" que permite usar la inteligencia artificial de Google.
 
 ### **Opción A: Método Fácil (Recomendado)**
 1. **Doble clic** en el archivo `EJECUTAR_APLICACION.bat`
-2. **Pega tu API Key** cuando te la pida
-3. **Presiona Enter**
-4. **¡Listo!** Se abrirá automáticamente en tu navegador
+2. **Presiona Enter** (ya tiene API Key configurada)
+3. **¡Listo!** Se abrirá automáticamente en tu navegador
 
 ### **Opción B: Método Manual**
 1. Presiona **Windows + R**
@@ -69,15 +68,14 @@ Es como una "llave" que permite usar la inteligencia artificial de Google.
 4. Escribe estos comandos **uno por uno**:
 
 ```bash
-cd C:\Users\[TU_USUARIO]\Desktop\[NOMBRE_DE_LA_CARPETA]
-set GEMINI_API_KEY=tu_api_key_aqui
-python app.py
+cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_itagui
+set GEMINI_API_KEY=AIzaSyAzhPbE9w4s2h790qG2rsc9MH5ULS2mmh8
+python nlp_seguridad_itagui/app.py
 ```
 
 **Reemplaza:**
 - `[TU_USUARIO]` = tu nombre de usuario de Windows
-- `[NOMBRE_DE_LA_CARPETA]` = nombre de la carpeta del proyecto
-- `tu_api_key_aqui` = la API key que copiaste
+- **¡La API Key ya está configurada!** No necesitas cambiarla
 
 ---
 

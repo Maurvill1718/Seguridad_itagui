@@ -72,9 +72,8 @@ Es como una "llave" que permite usar la inteligencia artificial de Google. Es **
 1. **Ve a la carpeta** `Seguridad_itagui` que descargaste
 2. **Busca el archivo** `EJECUTAR_APLICACION.bat`
 3. **Haz doble clic** en ese archivo
-4. **Pega tu API Key** cuando te la pida
-5. **Presiona Enter**
-6. **¡Listo!** Se abrirá automáticamente en tu navegador
+4. **Presiona Enter** (ya tiene API Key configurada)
+5. **¡Listo!** Se abrirá automáticamente en tu navegador
 
 ### **Opción B: Método Manual (Si el anterior no funciona)**
 1. **Presiona Windows + R**
@@ -84,13 +83,13 @@ Es como una "llave" que permite usar la inteligencia artificial de Google. Es **
 
 ```bash
 cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_itagui
-set GEMINI_API_KEY=tu_api_key_aqui
+set GEMINI_API_KEY=AIzaSyAzhPbE9w4s2h790qG2rsc9MH5ULS2mmh8
 python nlp_seguridad_itagui/app.py
 ```
 
 **Reemplaza:**
 - `[TU_USUARIO]` = tu nombre de usuario de Windows
-- `tu_api_key_aqui` = la API key que copiaste
+- **¡La API Key ya está configurada!** No necesitas cambiarla
 
 ---
 

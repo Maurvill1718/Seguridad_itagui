@@ -67,6 +67,11 @@ set GEMINI_API_KEY=tu_api_key_aqui
 set GEMINI_API_KEY=AIzaSyAzhPbE9w4s2h790qG2rsc9MH5ULS2mmh8
 ```
 
+**🎉 ¡BUENAS NOTICIAS!** Ya tienes una API Key configurada. Puedes usar esta directamente:
+```bash
+set GEMINI_API_KEY=AIzaSyAzhPbE9w4s2h790qG2rsc9MH5ULS2mmh8
+```
+
 ---
 
 ## 🎯 **PASO 5: EJECUTAR LA APLICACIÓN**
@@ -98,13 +103,13 @@ python nlp_seguridad_itagui/app.py
 ```bash
 cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_itagui
 pip install -r requirements.txt
-set GEMINI_API_KEY=tu_api_key_aqui
+set GEMINI_API_KEY=AIzaSyAzhPbE9w4s2h790qG2rsc9MH5ULS2mmh8
 python nlp_seguridad_itagui/app.py
 ```
 
 **⚠️ RECUERDA**: 
 - Cambiar `[TU_USUARIO]` por tu usuario real
-- Cambiar `tu_api_key_aqui` por tu API Key real
+- **¡La API Key ya está lista!** No necesitas cambiarla
 
 ---
 
