@@ -1,14 +1,14 @@
-# 🛡️ Analizador de Seguridad Itagüí
+# 🛡️ Análisis de Seguridad en Itagüí con IA
 
-Sistema de análisis de testimonios de seguridad ciudadana utilizando inteligencia artificial (Google Gemini).
+Una aplicación web profesional que analiza testimonios de seguridad ciudadana en Itagüí usando **Google Gemini** para detectar emociones, veracidad y generar explicaciones detalladas.
 
-## 🚀 Características
+## 🚀 Características Principales
 
-- **Análisis Emocional**: Detecta emociones (Alegría, Enojo, Miedo, Preocupación, etc.)
-- **Análisis de Veracidad**: Evalúa credibilidad (Verdadero, Falso, Rumor, Incierto)
-- **Explicación Detallada**: Proporciona análisis contextual completo
-- **Interfaz Intuitiva**: Diseño moderno y fácil de usar
-- **Tiempo Real**: Análisis instantáneo con IA
+- **🧠 Análisis Emocional**: Detecta alegría, enojo, miedo, preocupación con IA avanzada
+- **✅ Análisis de Veracidad**: Evalúa verdadero, falso, rumor o incierto con explicaciones
+- **📋 Explicaciones Detalladas**: Resúmenes contextuales profesionales
+- **🎨 Interfaz Moderna**: Diseño profesional con colores dinámicos y gradientes
+- **⚡ Tiempo Real**: Análisis instantáneo con Google Gemini API
 
 ## 🛠️ Tecnologías
 
@@ -17,45 +17,36 @@ Sistema de análisis de testimonios de seguridad ciudadana utilizando inteligenc
 - **Frontend**: HTML5 + CSS3 + JavaScript
 - **Estilos**: Diseño responsivo con gradientes
 
-## 📁 Estructura del Proyecto
+## 📚 Documentación Completa
 
+- **`GUIA_COMPLETA_PARA_AMIGO.md`**: Guía súper detallada paso a paso para usuarios sin conocimientos técnicos
+- **`instrucciones/GUIA_SUPER_SIMPLE.md`**: Instrucciones básicas
+- **`instrucciones/INSTRUCCIONES_GEMINI.md`**: Guía específica para Gemini
+
+## 🚀 Instalación Súper Fácil
+
+### Método Automático (Recomendado) ⭐
+1. **Descarga desde GitHub**: https://github.com/Maurvill1718/Seguridad_itagui
+2. **Extrae la carpeta** en tu escritorio
+3. **Doble clic** en `EJECUTAR_APLICACION.bat`
+4. **Pega tu API Key** de Google Gemini
+5. **¡Listo!** Se abre automáticamente en tu navegador
+
+### Método Manual
+```bash
+# 1. Clonar repositorio
+git clone https://github.com/Maurvill1718/Seguridad_itagui.git
+cd Seguridad_itagui
+
+# 2. Instalar dependencias
+pip install -r requirements.txt
+
+# 3. Configurar API Key
+set GEMINI_API_KEY=tu_api_key_aqui
+
+# 4. Ejecutar aplicación
+python nlp_seguridad_itagui/app.py
 ```
-nlp_seguridad_itagui/
-├── app.py                          # Aplicación principal
-├── EJECUTAR_APLICACION.bat         # Script de ejecución automática
-├── requirements.txt                # Dependencias Python
-├── config.py                       # Configuración
-├── templates/
-│   └── index.html                  # Interfaz web
-├── static/
-│   └── style.css                   # Estilos CSS
-├── instrucciones/
-│   └── GUIA_SUPER_SIMPLE.md        # Guía para usuarios no técnicos
-└── docs/
-    └── README.md                   # Documentación técnica
-```
-
-## 🔧 Instalación
-
-### Requisitos
-- Python 3.8+
-- Cuenta de Google (para API Key)
-- Navegador web moderno
-
-### Pasos
-1. **Clonar/Descargar** el proyecto
-2. **Instalar dependencias**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. **Obtener API Key** de Google Gemini:
-   - Ir a: https://aistudio.google.com/
-   - Crear API Key gratuita
-4. **Ejecutar aplicación**:
-   ```bash
-   python app.py
-   ```
-   O usar: `EJECUTAR_APLICACION.bat`
 
 ## 🎯 Uso
 
