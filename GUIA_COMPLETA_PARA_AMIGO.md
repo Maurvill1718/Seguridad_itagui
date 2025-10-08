@@ -82,9 +82,9 @@ Es como una "llave" que permite usar la inteligencia artificial de Google. Es **
 4. **Escribe estos comandos uno por uno**:
 
 ```bash
-cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_itagui
+cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_Antioquia\nlp_seguridad_itagui
 set GEMINI_API_KEY=AIzaSyAzhPbE9w4s2h790qG2rsc9MH5ULS2mmh8
-python nlp_seguridad_itagui/app.py
+python app.py
 ```
 
 **Reemplaza:**
@@ -116,7 +116,7 @@ python nlp_seguridad_itagui/app.py
 ### **Ejemplo:**
 Si tu usuario es `juan`, el comando sería:
 ```bash
-cd C:\Users\juan\Desktop\Seguridad_itagui
+cd C:\Users\juan\Desktop\Seguridad_Antioquia\nlp_seguridad_itagui
 ```
 
 ---

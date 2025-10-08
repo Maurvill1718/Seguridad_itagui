@@ -20,7 +20,7 @@ Una vez que descargues la carpeta desde GitHub, necesitas ejecutar estos comando
 
 ### **Comando exacto:**
 ```bash
-cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_itagui
+cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_Antioquia\nlp_seguridad_itagui
 ```
 
 **⚠️ IMPORTANTE**: Reemplaza `[TU_USUARIO]` con tu nombre de usuario de Windows.
@@ -48,13 +48,13 @@ C:\Users\usuario>
 
 **En este caso, el usuario es `usuario`, entonces el comando sería:**
 ```bash
-cd C:\Users\usuario\Desktop\Seguridad_itagui
+cd C:\Users\usuario\Desktop\Seguridad_Antioquia\nlp_seguridad_itagui
 ```
 
 ### **Ejemplo:**
 Si tu usuario es `juan`, el comando sería:
 ```bash
-cd C:\Users\juan\Desktop\Seguridad_itagui
+cd C:\Users\juan\Desktop\Seguridad_Antioquia\nlp_seguridad_itagui
 ```
 
 ---
@@ -121,10 +121,10 @@ python nlp_seguridad_itagui/app.py
 ### **Copia y pega estos comandos uno por uno:**
 
 ```bash
-cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_itagui
+cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_Antioquia\nlp_seguridad_itagui
 pip install -r requirements.txt
 set GEMINI_API_KEY=AIzaSyAzhPbE9w4s2h790qG2rsc9MH5ULS2mmh8
-python nlp_seguridad_itagui/app.py
+python app.py
 ```
 
 **⚠️ RECUERDA**: 
