@@ -88,8 +88,36 @@ python nlp_seguridad_itagui/app.py
 ```
 
 **Reemplaza:**
-- `[TU_USUARIO]` = tu nombre de usuario de Windows
+- `[TU_USUARIO]` = tu nombre de usuario de Windows (ver cómo obtenerlo abajo)
 - **¡La API Key ya está configurada!** No necesitas cambiarla
+
+### **¿Cómo saber tu nombre de usuario?**
+1. **Presiona** `Windows + R`
+2. **Escribe**: `whoami`
+3. **Presiona Enter**
+4. **Copia el nombre** que aparece (sin el dominio)
+
+### **Ejemplo paso a paso:**
+1. **Presiona** `Windows + R` (se abre "Ejecutar")
+2. **Escribe**: `whoami`
+3. **Presiona Enter**
+4. **Verás algo como**: `DESKTOP-ABC123\juan` o `juan`
+5. **Tu usuario es**: `juan` (la parte después de la barra `\`)
+
+### **Si no funciona el comando `whoami`:**
+**Método alternativo:**
+1. **Presiona** `Windows + R`
+2. **Escribe**: `cmd`
+3. **Presiona Enter**
+4. **En la ventana negra, escribe**: `echo %USERNAME%`
+5. **Presiona Enter**
+6. **Verás tu nombre de usuario**
+
+### **Ejemplo:**
+Si tu usuario es `juan`, el comando sería:
+```bash
+cd C:\Users\juan\Desktop\Seguridad_itagui
+```
 
 ---
 

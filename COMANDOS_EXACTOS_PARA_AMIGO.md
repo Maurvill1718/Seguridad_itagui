@@ -31,6 +31,26 @@ cd C:\Users\[TU_USUARIO]\Desktop\Seguridad_itagui
 3. **Presiona Enter**
 4. **Copia el nombre** que aparece (sin el dominio)
 
+### **Ejemplo paso a paso:**
+1. **Presiona** `Windows + R` (se abre "Ejecutar")
+2. **Escribe**: `cmd`
+3. **Presiona Enter**
+4. **En la ventana negra, escribe**: `echo %USERNAME%`
+5. **Presiona Enter**
+6. **Verás tu nombre de usuario** (ejemplo: `usuario`)
+
+### **Ejemplo visual:**
+```
+C:\Users\usuario>echo %USERNAME%
+usuario
+C:\Users\usuario>
+```
+
+**En este caso, el usuario es `usuario`, entonces el comando sería:**
+```bash
+cd C:\Users\usuario\Desktop\Seguridad_itagui
+```
+
 ### **Ejemplo:**
 Si tu usuario es `juan`, el comando sería:
 ```bash
